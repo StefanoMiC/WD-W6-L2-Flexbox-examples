@@ -5,20 +5,120 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>git test</title>
+    <title>flexbox tests</title>
+
+    <style>
+        .wrapper {
+            max-width: 768px;
+            background-color: #f8f8f8;
+            min-height: 500px;
+            margin: 0 auto;
+
+            display: flex;
+        }
+
+
+        .box {
+            width: 150px;
+            height: 150px;
+        }
+
+        .crimson {
+            background-color: crimson;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .crimson img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .aqua {
+            background-color: aqua;
+            flex-grow: 1;
+            height: auto;
+            padding: 0 20px;
+        }
+
+        /* |0px -------- 500px| */
+
+        @media(max-width: 500px) {
+            .wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .aqua {
+                width: auto;
+            }
+        }
+
+        /* 700px --------- 999px) */
+        @media (min-width: 700px) and (max-width: 999px) {
+            .wrapper {
+                background-color: red;
+            }
+        }
+
+        /* 1000px --------- ... infinite */
+        @media (min-width: 1000px) {
+            .wrapper {
+                background-color: blue;
+            }
+        }
+
+        /* @media (max-width: 600px) {
+            .wrapper {
+                flex-direction: column
+            }
+
+            .box {
+                width: unset;
+            }
+        } */
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-item {
+            width: 100px;
+            height: 100px;
+
+            background-color: white;
+            border: 2px solid crimson;
+        }
+    </style>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>menu item 1</li>
-            <li>menu item 2</li>
-            <li>menu item 3</li>
-        </ul>
-    </nav>
 
-    <h1>hello git! resolved conflict</h1>
 
+    <div class="wrapper">
+        <div class="box crimson">
+            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="">
+        </div>
+        <div class="box aqua">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio animi vel molestias voluptatibus enim,
+                veritatis magnam nisi labore asperiores harum commodi quaerat! Id commodi consectetur similique amet
+                voluptatibus perspiciatis dolores?</p>
+        </div>
+    </div>
+
+
+    <h4>grow, shrink, basis examples</h4>
+    <div class="flex-container">
+
+        <!-- not growin not shrinking -->
+        <div class="flex-item" style="flex-shrink:0"></div>
+        <!-- growing and shrinking -->
+        <div class="flex-item" style="flex-grow: 1; flex-shrink: 1;"></div>
+        <!-- not growing, bigger size (basis) -->
+        <div class="flex-item" style="flex-basis: 200px"></div>
+    </div>
 
 </body>
 
